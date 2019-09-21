@@ -1,0 +1,33 @@
+<!--pages/homePage/homePage.wxml-->
+<view style="height:100%;">
+  <swiper class='i-swiper' 
+          style="height:30%;"
+          indicator-dots="{{swiperConfig.indicatorDots}}" 
+          autoplay="{{swiperConfig.autoplay}}" 
+          interval="{{swiperConfig.interval}}" 
+          duration="{{swiperConfig.duration}}" 
+          circular="{{swiperConfig.circular}}">
+    <block wx:for="{{imgUrls}}" wx:key="*this"  >
+      <swiper-item>
+        <image src='{{item}}' class='i-img-slide' mode='aspectFill'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="card">
+  </view>
+  <view class="page-section page-section-gap" style="height:50%;">
+    <map
+      id="myMap"
+      style="width: 100%; height: 100%;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      show-location
+    ></map>
+  </view>
+</view>
+
+
+
+
+

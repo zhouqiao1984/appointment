@@ -1,0 +1,14 @@
+/* pages/recordAppoint/recordAppoint.wxss */
+
+
+
+
+
+
+
+
+.i-row {
+  font-size: 20px;
+  color: #1607e0ec;
+  margin: 20px;
+}

@@ -1,0 +1,9 @@
+<!--pages/recordAppoint/recordAppoint.wxml-->
+<view>
+<view class="i-row" wx:if='{{items.length==0}}' wx:key=''>
+      <view>还没有预约记录</view>
+  </view>
+  <view class="i-row" wx:if='{{items.length>0}}' wx:for='{{items}}' wx:key=''>
+      <view>预约时间: {{item.view}}</view>
+  </view>
+</view>

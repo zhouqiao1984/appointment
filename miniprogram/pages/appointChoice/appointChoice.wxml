@@ -1,0 +1,21 @@
+<view class="page_bd">
+        <view class="section">
+            <view class="i-title">{{today}}</view>
+            <radio-group class="radio-group" bindchange="radioChange">
+              <view wx:for-items="{{items}}" 
+                  wx:if="{{item.show}}" 
+                  wx:key="{{item.key}}" 
+                  >
+                <radio  class="i-radio" 
+                        value="{{item.index}}" 
+                        checked="{{item.checked}}"  
+                        disabled="{{!item.free}}"
+                        >
+                    <text class="{{item.free?'free':'busy'}}">{{item.value}}</text>
+                </radio>
+              </view>
+            </radio-group>
+               <button type="primary" class="i_btn"
+  disabled="{{disabled}}" bindtap="saveTime"> 确定 </button>
+        </view>
+</view>

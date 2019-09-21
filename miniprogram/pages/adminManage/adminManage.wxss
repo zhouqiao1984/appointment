@@ -1,0 +1,122 @@
+/* pages/adminManage/adminManage.wxss */
+
+/* 小程序根节点是page */
+page{
+  height:100%
+}
+.calendar_title{
+  width: 76%; 
+  margin: 10rpx auto;
+  margin-top: 2em;
+  justify-content: space-between;
+  font-size: 22pt;
+  color: #58595b;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  }
+
+.calendar_title view image{
+  width: 65rpx; 
+  height: 65rpx;
+  margin: 10rpx auto;
+  }
+.iconhide {
+  opacity:0.3;
+}
+.calendar_yearmonth {
+   display: table-cell;
+   vertical-align:left;
+    padding: 0px;
+}
+/* 日历 */
+.calendar{
+  width: 100%;
+  margin-top: 75rpx;
+  background: #fff;
+  border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  padding: 0 0 20rpx;
+  font-family: FZZhunYuan-M02S;
+  }
+
+.header{
+  font-size: 0;
+  width: 80%;
+  margin: 0 auto;
+  }
+  
+.header>view{
+  display: inline-block;
+  width: 14.285%;
+  color: #666;
+  font-size: 30rpx;
+  text-align: center;
+  border-bottom: 1px solid #D0D0D0;
+  padding: 20rpx 0;
+  }
+.weekMark{
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  }
+.weekMark view{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #69f;
+  }
+.date_box{
+  /* font-size: 0; */
+  padding: 10rpx 0;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 3.2em; /* 日期Y轴间距 */
+
+  }
+.date_box>view{
+  position: relative;
+  display: inline-block;
+  width: 14.285%;
+  color: #666;
+  text-align: center;
+  vertical-align: middle;
+  }
+
+
+
+.date_head{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 14pt;
+  }
+.nowDay .date_head{
+  width: 60rpx;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  background-color: #4169E1;
+  margin: 0 auto;
+  }
+  /* 右上角预约数 */
+  .appoint {
+    position: absolute;
+    margin-top: -76rpx;
+    margin-left: 36rpx;
+    color: #708090;
+    font-size: 10pt;
+    border-radius: 50%;
+    background-color: #C1FFC1; /* #C1FFC1 */
+    width: 36rpx;
+    height: 30rpx;
+    padding: 1rpx 10rpx;
+    opacity: 0.8;
+
+  }
+
+  .appoint>view{
+    margin-top: -14rpx;
+    color:#FF0000;
+  }

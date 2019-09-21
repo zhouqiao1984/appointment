@@ -1,0 +1,54 @@
+@import '../lib/weui.wxss';
+.i_userinfo {
+  background-color: white;
+  display: flex;
+  height: 6em;
+  align-items: center;
+}
+
+.i_userinfo image {
+  width: 4em;
+  height: 4em;
+  padding-left: 1em;
+}
+.i_userinfo .nickName {
+  padding-left: 1em;
+  padding-top: 1em;
+  align-self: flex-start;
+}
+
+.i_menu {
+  margin-top: 15px;
+  background-color: white;
+}
+.i_navigator{
+  display: flex;
+  justify-content: space-between;
+  height: 3em;
+  align-items: center;
+}
+.i_navigator .i_label {
+  padding-left: 1em;
+}
+.i_navigator .i_text {
+  display: flex;
+  align-items: center;
+  padding-right: 1.2em;
+  color: #8a8a8a
+}
+
+navigator image {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.3em;
+  padding-top: 0.15em;
+}
+
+/** 修改默认的navigator点击态 **/
+/* .navigator-hover {
+    color:blue;
+} */
+/** 自定义其他点击态样式类 **/
+/* .other-navigator-hover {
+    color:red;
+} */

@@ -1,0 +1,40 @@
+<view>
+
+    <view class='calendar_title '>
+      <view class='icon' bindtap='lastMonth'>
+        <image src='/images/last.png' />
+      </view>
+      <view class="calendar_yearmonth">
+        <view >{{year}}年{{month}}月</view>
+      </view>
+      <view class='icon' bindtap='nextMonth'>
+        <image src='/images/next.png' />
+      </view>
+    </view>
+
+    <!-- 日历主体 -->
+    <view class='calendar'>
+      <view class='header'>
+        <view wx:for='{{date}}' wx:key='' class='{{(index == todayIndex) && isTodayWeek ? "weekMark" : ""}}'>
+          {{item}}
+          <view></view>
+        </view>
+      </view>
+
+        <view class='date_box'>
+            <view wx:for='{{dateArr}}' wx:key=''>
+                  <view class='{{isToday == item.isToday ? "nowDay" : ""}}'>
+                      <view class='date_head' 
+                            bindtap='lookHuoDong' 
+                            data-year='{{year}}' 
+                            data-month='{{month}}' 
+                            data-datenum='{{item.dateNum}}'
+                      >
+                      <view>{{item.dateNum}}</view>
+                      </view>
+                  </view>
+            </view>
+      </view>
+    </view>
+
+</view>

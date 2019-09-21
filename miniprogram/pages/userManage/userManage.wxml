@@ -1,0 +1,57 @@
+
+<view class="i_boay">
+    <view class="i_userinfo">
+        <view>
+          <image src="{{avatarUrl}}"></image>
+        </view>
+        <view class="nickName">
+          {{userInfo.nickName}}
+        </view>
+    </view>
+    <view class="i_menu">
+        <navigator url="/pages/template/template?title=更改名字&type=text&table=app_user&key=baby&value={{baby}}&_id={{_id}}" 
+                  class="i_navigator"
+                  open-type="navigate" >
+              <view class="i_label" >宝宝</view>
+              <view class="i_text">
+                 <view> {{baby}} </view>
+                 <image src='/images/to-right32.png' />
+              </view> 
+        </navigator>
+    </view>
+    <view class="i_menu">
+        <navigator url="/pages/template/template?title=更改手机号&type=number&table=app_user&key=tel&value={{tel}}&_id={{_id}}" 
+                  class="i_navigator"
+                  open-type="navigate" >
+              <view class="i_label" >手机号</view>
+              <view class="i_text" >
+                  <view>{{tel}}</view>
+                  <image src='/images/to-right32.png' />
+              </view> 
+        </navigator>
+    </view >
+    <view class="i_menu">
+          <navigator url="/pages/appointRecord/appointRecord"
+                  class="i_navigator"
+                  open-type="navigate" 
+                  hover-class="other-navigator-hover">
+                  <view class="i_label">我的预约</view>
+                  <view class="i_text">
+                    <image src='/images/to-right32.png' />
+                  </view>
+          </navigator>
+      </view>
+
+      <view class="i_menu">
+          <navigator url="/pages/adminManage/adminManage"
+                  class="i_navigator"
+                  open-type="navigate" 
+                  hover-class="other-navigator-hover">
+                  <view class="i_label">管理员</view>
+                  <view class="i_text">
+                    <image src='/images/to-right32.png' />
+                  </view>
+          </navigator>
+      </view>
+   
+</view>

@@ -1,0 +1,16 @@
+/* pages/common/temps.wxss */
+
+.upData {
+  margin-top: 3em;
+  border-bottom: 1px solid #62b900;
+  padding-bottom: .4em;
+  padding-left: .5em;
+
+}
+
+.i_btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+

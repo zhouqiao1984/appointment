@@ -1,0 +1,10 @@
+
+<view class="section">
+  <input class="upData"
+          value="{{value}}" 
+          type="{{type}}"
+          bindinput="getValue"
+          maxlength="11"
+          focus="true"/>
+</view>
+<button type="primary" class="i_btn" bindtap="saveValue" disabled="{{disabled}}"> 保存 </button>

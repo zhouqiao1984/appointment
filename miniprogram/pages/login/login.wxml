@@ -1,0 +1,38 @@
+<!-- <view class="container"> -->
+  <view class="page-body">
+        <view class="page-section">
+          <view class="weui-cells__title">宝宝名字</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <input class="weui-input" 
+              bindinput="getBaby"
+              auto-focus 
+              placeholder="请输入"
+              maxlength="11" />
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells__title">手机号</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <input class="weui-input"  
+              bindinput="getTel"
+              placeholder="请输入"
+              maxlength="11"
+              type="number"/>
+            </view>
+          </view>
+        </view>
+
+          <view class="page-section">
+            <button 
+              type="primary"
+              open-type="getUserInfo" 
+              bindgetuserinfo="onGetUserInfo"
+              class="btn"
+            >完成</button>
+          </view>
+  </view>
+<!-- </view> -->
+  

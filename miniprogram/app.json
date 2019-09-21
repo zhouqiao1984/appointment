@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/homePage/homePage",
+    "pages/adminManage/adminManage",
+    "pages/adminViewAppoint/adminViewAppoint",
+    "pages/appointCalendar/appointCalendar",
+    "pages/appointChoice/appointChoice",
+    "pages/userManage/userManage",
+    "pages/login/login",
+    "pages/template/template",
+    "pages/appointRecord/appointRecord",
+    "pages/databaseGuide/databaseGuide",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room"
+  ],
+  "window": {
+    "backgroundColor": "#FFF",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/home2.png",
+        "iconPath": "images/home1.png",
+        "pagePath": "pages/homePage/homePage",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/time2.png",
+        "iconPath": "images/time1.png",
+        "pagePath": "pages/appointCalendar/appointCalendar",
+        "text": "预约"
+      },
+      {
+        "selectedIconPath": "images/user2.png",
+        "iconPath": "images/user1.png",
+        "pagePath": "pages/userManage/userManage",
+        "text": "我的"
+      }
+    ]
+  }
+}
