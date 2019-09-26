@@ -1,15 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/homePage/homePage",
     "pages/adminManage/adminManage",
+   
+    "pages/appointRecord/appointRecord",
     "pages/adminViewAppoint/adminViewAppoint",
+    "pages/homePage/homePage",
+    
     "pages/appointCalendar/appointCalendar",
     "pages/appointChoice/appointChoice",
     "pages/userManage/userManage",
     "pages/login/login",
     "pages/template/template",
-    "pages/appointRecord/appointRecord",
     "pages/databaseGuide/databaseGuide",
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",

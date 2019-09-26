@@ -14,10 +14,25 @@ App({
         traceUser: true,
       })
     }
-    
+    /**
+     * islogin: false,
+     * baby           app_user > baby   宝宝名字
+     * tel            app_user > tel    手机号
+     * userid         app_user > _id    user表_id
+     * openId         _openid   微信openid
+     * appId      
+     * grade          app_user > grade  用户级别
+     *                    0 访客 1 普通用户 2 会员  3、管理员   字段类型 number
+     * config_end     app_config > end  可预约日期
+     *                    2019-10-01
+     * config_grade   app_config > grade  预约模式
+     *                    0 游客 1 普通用户 2 会员
+     */
     this.globalData = {
       islogin: false
     }
+  
+ 
   },
 
   getDate: function(){
@@ -40,5 +55,15 @@ App({
       case 6: day_cn = '六'; break;       
     }
     return `${year}-${month}-${d} ${hour}:${min}:${sec} 星期${day_cn}`
+  },
+
+   getyyyyMMdd: function () {
+    let now = new Date();
+    let year = now.getFullYear();
+    let m = (now.getMonth() + 1) + '';
+    let d = now.getDate() + '';
+    let month = m.length === 1 ? ('0' + m) : m
+    let da = d.length === 1 ? ('0' + d) : d
+    return `${year}${month}${da}`
   }
 })

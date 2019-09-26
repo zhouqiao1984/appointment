@@ -8,10 +8,11 @@ exports.main = async (event, context) => {
   let _openid = wxContext.OPENID
   let dbName = event.dbName
   let filter = event.filter ? event.filter : null
-
+  let column = event.column ? event.column : null
   console.log('cloudfunc [commonGet] , _openid [', _openid, ']')
   console.log('dbName[', dbName, '], filter[', filter,']')
-  return db.collection(dbName).where(filter).get().then(res => {
+  return db.collection(dbName).where(filter)
+    .field(column).get().then(res => {
     console.log('response -> ',res)
     return res
   })
