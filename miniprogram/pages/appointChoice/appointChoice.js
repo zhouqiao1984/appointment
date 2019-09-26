@@ -109,11 +109,20 @@ Page({
   // 请求新内容
   refreshItems: function (date_id) {
     let that = this
-    table.where({
-      date_id: date_id
-    }).get({
+    wx.cloud.callFunction({
+      name: 'commonGet',
+      data: {
+        filter: {
+          date_id: date_id
+        },
+        column: {
+          index: true
+        },
+        dbName: 'app_time'
+      },
       success: function (res) {
-        that.renderItems(res.data)
+        console.log('Choice--->', res)
+        that.renderItems(res.result.data)
       },
       fail: err => {
         log.error('[selectTime] 刷新日历失败 app_time.getByDate_id[', date_id,'] 调用失败', err)

@@ -2,12 +2,21 @@
 <view class="i_boay">
     <view class="i_userinfo">
         <view>
-          <image src="{{avatarUrl}}"></image>
+            <image src="{{avatarUrl}}"></image>
         </view>
-        <view class="nickName">
-          {{userInfo.nickName}}
+        <view>
+            <view class="i_name">
+              {{userInfo.nickName}}
+            </view>
+            <view class="i_name">
+              用户等级:  {{gradeShow}}
+            </view>
         </view>
     </view>
+   <view class="i_menu i_openid">
+            <view class="i_openidkey"> ID </view>
+            <input value='{{openId}}'  maxlength="28"/>  
+     </view>
     <view class="i_menu">
         <navigator url="/pages/template/template?title=更改名字&type=text&table=app_user&key=baby&value={{baby}}&_id={{_id}}" 
                   class="i_navigator"
@@ -42,7 +51,7 @@
           </navigator>
       </view>
 
-      <view class="i_menu">
+      <view class="i_menu" wx:if='{{isAdmin}}'>
           <navigator url="/pages/adminManage/adminManage"
                   class="i_navigator"
                   open-type="navigate" 

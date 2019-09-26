@@ -12,12 +12,8 @@
     const version = wx.getSystemInfoSync().SDKVersion
     console.log(version)
 </view>
-
-
-
 <view>
-深绿  #62b900
-浅绿  #11cd6e
+
 setData或链接数据库，key是变量时用[]
 
 页面跳转传值，子页面返回上一页面，更新上级页面值

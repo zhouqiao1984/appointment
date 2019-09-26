@@ -1,13 +1,52 @@
 /* pages/adminManage/adminManage.wxss */
+@import "../lib/weui.wxss";
 
 /* 小程序根节点是page */
 page{
   height:100%
 }
+.admin_body {
+  height:100%;
+  padding: 0 20rpx;
+}
+
+.config_body {
+    margin: 30rpx auto;
+    /* padding: 20rpx 40rpx; */
+    border:solid 2px #FFD700;
+    border-radius: 20rpx;
+  
+}
+.config_main {
+  background-color: #FFFFFF;
+   padding: 20rpx;
+   margin-top: 20rpx;
+}
+
+.config_content {
+  /* padding: 20rpx 40rpx;  */
+  /* border-bottom:solid 2px #FFD700; */
+  display: flex;
+  /* justify-content:space-around; */
+}
+.config_key {
+  margin-left: 10%;
+
+}
+.config_val {
+  margin-left: 10%;
+
+}
+.config_content image {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.3em;
+  padding-top: 0.15em;
+}
 .calendar_title{
   width: 76%; 
-  margin: 10rpx auto;
-  margin-top: 2em;
+  margin: 2rpx auto;
+  /* margin-top: 2em; */
   justify-content: space-between;
   font-size: 22pt;
   color: #58595b;
@@ -33,12 +72,13 @@ page{
 /* 日历 */
 .calendar{
   width: 100%;
-  margin-top: 75rpx;
+  /* margin-top: 75rpx; */
   background: #fff;
   border-bottom-right-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
   padding: 0 0 20rpx;
   font-family: FZZhunYuan-M02S;
+
   }
 
 .header{
@@ -66,14 +106,14 @@ page{
   bottom: 0;
   left: 0;
   width: 100%;
-  border-bottom: 2px solid #69f;
+  border-bottom: 2px solid #1296db;
   }
 .date_box{
   /* font-size: 0; */
   padding: 10rpx 0;
   width: 80%;
   margin: 0 auto;
-  line-height: 3.2em; /* 日期Y轴间距 */
+  line-height: 2.8em; /* 日期Y轴间距 */
 
   }
 .date_box>view{
@@ -94,29 +134,29 @@ page{
   }
 .nowDay .date_head{
   width: 60rpx;
-  border-radius: 50%;
+  border-radius: 20%;
   text-align: center;
   color: #fff;
-  background-color: #4169E1;
+  background-color: #1296db;
   margin: 0 auto;
   }
   /* 右上角预约数 */
   .appoint {
     position: absolute;
-    margin-top: -76rpx;
-    margin-left: 36rpx;
+    margin-top: -70rpx;
+    margin-left: 60rpx;
     color: #708090;
     font-size: 10pt;
-    border-radius: 50%;
-    background-color: #C1FFC1; /* #C1FFC1 */
-    width: 36rpx;
-    height: 30rpx;
-    padding: 1rpx 10rpx;
+    border-radius: 100%;
+    background-color: #3CB371; /* #C1FFC1 */
+    width: 40rpx;
+    height: 40rpx;
+    padding: 1rpx 1rpx;
     opacity: 0.8;
 
   }
 
-  .appoint>view{
-    margin-top: -14rpx;
-    color:#FF0000;
+  .appoint>view {
+    margin-top: -12rpx;
+    color:#FFFAFA;
   }

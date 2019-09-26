@@ -62,7 +62,7 @@ Page({
       app.globalData.userInfo = e.detail.userInfo
     }
   },
-  // 初始化ipenid
+  // 初始化openid
   onGetOpenid: function() {
     // 调用云函数
     wx.cloud.callFunction({

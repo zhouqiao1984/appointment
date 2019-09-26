@@ -33,8 +33,11 @@ Page({
   onLoad: function () {
     log.info('[homePage] join')
     this.getUsers()
+    this.initConfig()
   },
-
+  /**
+   * 初始化用户自定义信息
+   */
   getUsers: function () {
     let that = this
     wx.cloud.callFunction({
@@ -50,6 +53,28 @@ Page({
         app.globalData.baby = users[0].baby
         app.globalData.tel = users[0].tel
         app.globalData.userid = users[0]._id
+        app.globalData.grade = users[0].grade
+      }
+    })
+
+  },
+   /**
+   * 初始化预约配置信息
+   */
+  initConfig: function () {
+    let that = this
+    wx.cloud.callFunction({
+      name: 'commonGet',
+      data: {
+        dbName: 'app_config',
+        filter: { _id: 'adminconfig' }
+      }
+    }).then(res => {
+      let config = res.result.data
+      if (config.length > 0) {
+        log.info('[首页 homePage] 读取预约配置信息成功', config[0])
+        app.globalData.config_end = config[0].end
+        app.globalData.config_grade = config[0].grade
       }
     })
 

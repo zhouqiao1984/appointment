@@ -1,44 +1,75 @@
-<view>
-
-    <view class='calendar_title '>
-      <view class='{{ isShow ? "iconhide" : ""}}' bindtap='lastMonth'>
-        <image src='/images/last.png' />
-      </view>
-      <view class="calendar_yearmonth">
-        <view >{{year}}年{{month}}月</view>
-      </view>
-      <view class='{{ isShow ? "" :"iconhide"}}' bindtap='nextMonth'>
-        <image src='/images/next.png' />
-      </view>
-    </view>
-
-    <!-- 日历主体 -->
-    <view class='calendar'>
-      <view class='header'>
-        <view wx:for='{{date}}' wx:key='' class='{{(index == todayIndex) && isTodayWeek ? "weekMark" : ""}}'>
-          {{item}}
-          <view></view>
+<view class="admin_body">
+  <view class="config_body">
+      <view class='calendar_title '>
+        <view class='{{ isShow ? "iconhide" : ""}}' bindtap='lastMonth'>
+          <image src='/images/last.png' />
+        </view>
+        <view class="calendar_yearmonth">
+          <view >{{year}}年{{month}}月</view>
+        </view>
+        <view class='{{ isShow ? "" :"iconhide"}}' bindtap='nextMonth'>
+          <image src='/images/next.png' />
         </view>
       </view>
 
-        <view class='date_box'>
-            <view wx:for='{{dateArr}}' wx:key=''>
-                  <view class='{{isToday == item.isToday ? "nowDay" : ""}}'>
-                      <view class='date_head' 
-                            bindtap='lookHuoDong' 
-                            data-year='{{year}}' 
-                            data-month='{{month}}' 
-                            data-datenum='{{item.dateNum}}'
-                      >
-                          <view>{{item.dateNum}}</view>
-                          <view class="appoint">
-                              <view>{{item.appoint}}
-                              </view>
-                          </view>
-                      </view>
-                  </view>
-            </view>
+      <!-- 日历主体 -->
+      <view class='calendar'>
+        <view class='header'>
+          <view wx:for='{{date}}' wx:key='' class='{{(index == todayIndex) && isTodayWeek ? "weekMark" : ""}}'>
+            {{item}}
+            <view></view>
+          </view>
+        </view>
+
+          <view class='date_box'>
+              <view wx:for='{{dateArr}}' wx:key=''>
+                    <view class='{{isToday == item.isToday ? "nowDay" : ""}}'>
+                        <view class='date_head' 
+                              bindtap='lookHuoDong' 
+                              data-year='{{year}}' 
+                              data-month='{{month}}' 
+                              data-datenum='{{item.dateNum}}'
+                        >
+                            <view>{{item.dateNum}}</view>
+                            <view class="{{item.dateNum?'appoint':''}}">
+                                <view>{{item.appoint}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+              </view>
+        </view>
       </view>
     </view>
+    <view class="config_body" >
+        <view class="config_main">
+          <picker mode="date" value="{{date}}" start="2019-09-01"  bindchange="bindDateChange">
+            <view class="config_content">
+              <view class="config_key">当前可预约至 :</view>
+              <view class="config_val">{{end}}</view>
+              <!-- <image src='/images/to-right32.png' /> -->
+            </view>
+          </picker>
+        </view>
 
+          <view class="config_main">
+              <!-- <view class="config_content"> -->
+                <!-- <view>关闭/开启会员模式</view>
+                <view> 
+                    <switch checked="{{switchChecked}}" bindchange="switchChange"/>
+                </view> -->
+                    <!-- </view> -->  
+                  <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeArray}}">
+                    <view class="config_content">
+                      <view class="config_key">预约权限设置 :</view> 
+                      <view class="config_val">{{gradeArray[gradeIndex]}}</view>
+                      <!-- <image src='/images/to-right32.png' /> -->
+                    </view>
+                  </picker>
+         
+          </view>
+            <view class="config_main">
+              <button type="primary" class="config_btn" bindtap="updateSubmit" > 更新配置信息 </button>
+          </view>
+    </view>
 </view>

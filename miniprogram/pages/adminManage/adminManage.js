@@ -17,7 +17,10 @@ Page({
     isShow: true, // 切换左右箭头样式
     nowCountDate:null, // 本月数据
     nextCountDate: null, // 下月数据
-    
+    end:'', // 预约开放截止日期
+    // switchChecked: '', // 开启会员模式 true 3 , false 2
+    gradeArray: ['访客', '普通用户', '会员'], // 预约权限列表
+    gradeIndex: 0, // 预约权限选择
   },
   onLoad: function () {
     log.info('[adminManage] join')
@@ -26,6 +29,8 @@ Page({
     let month = now.getMonth() + 1;
     let nextYear = month > 11 ? year + 1 : year;
     let nextMonth = month > 11 ? 0 : month;
+    let config_grade = app.globalData.config_grade || 0
+    let config_end = app.globalData.config_end || ''
     this.setData({
       year: year,
       month: month,
@@ -34,7 +39,9 @@ Page({
       nowMonth: month,
       nowDay: now.getDate(),
       nextYear: year,
-      nextMonth: (nextMonth + 1)
+      nextMonth: (nextMonth + 1),
+      gradeIndex: config_grade,
+      end: config_end
     })
     this.getDataByMmonth(month, year, null, null)
   },
@@ -74,35 +81,12 @@ Page({
     let year = e.currentTarget.dataset.year;
     let month = e.currentTarget.dataset.month;
     let datanum = e.currentTarget.dataset.datenum;
-    let timeError = false
-    if (year < this.data.nowYear) {
-      timeError = true
-    } else if (year == this.data.nowYear) {
-      if (month < this.data.nowMonth) {
-        timeError = true
-      } else if (month == this.data.nowMonth) {
-        if (datanum < this.data.nowDay) {
-          timeError = true
-        }
-      }
-    }
-    if (timeError) {
-      wx.showToast({
-        title: '已停止预约',
-        icon: 'none',
-        duration: 2000
-      })
-    } else {
-      wx.navigateTo({
-        url: '../selectTime/selectTime?year=' + year + '&month=' + month + '&day=' + datanum
-      });
-    }
-
+    wx.navigateTo({
+      url: '../adminViewAppoint/adminViewAppoint?year=' + year + '&month=' + month + '&day=' + datanum
+    });
   },
 
   dateInit: function (setYear, setMonth, countDate) {
-    // console.log('初始化日历 year --> ', setYear, '   month --> ', setMonth)
-    // console.log('预约数 ----------->', countDate)
     //全部时间的月份都是按0~11基准，显示月份才+1
     let dateArr = [];  //需要遍历的日历数组数据
     let arrLen = 0;  //dateArr的数组长度
@@ -226,7 +210,88 @@ Page({
       })
     }
     this.dateInit(yearCalendar, monthCalendar, countDate);
-  }
+  },
+  bindDateChange: function (e) {
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      end: e.detail.value
+    })
+  },
 
+  /**
+   * 是否会员模式 0 游客 1 用户 2 会员 3管理员 number
+   *  
+   */
+  bindPickerChange: function (e) {
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      gradeIndex: e.detail.value
+    })
+  },
+ 
+  // switchChange: function (e) {
+  //   this.setData({
+  //     switchChecked: e.detail.value
+  //   })
+  // },
+ /**
+   * 点击更新按钮
+   */
+  updateSubmit(){
+    let that = this
+    wx.showModal({
+      title: '更新确认',
+      content: `预约时间开放至 ${that.data.end}  ,  【${that.data.gradeArray[that.data.gradeIndex]}】 模式`,
+      success(res) {
+        if (res.confirm) {
+          // 唯一性检查
+          that.updateConfig()
+        } else if (res.cancel) {
+          // console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  /**
+   * 更新配置
+   */
+    updateConfig: function () {
+      // console.log('更新配置')
+      let that = this
+      // 调用云函数
+      let grade = this.data.gradeIndex
+      wx.cloud.callFunction({
+        name: 'commonUpdateByid',
+        data: {
+          dbData: {
+            timestamp: new Date().getTime(),
+            end: that.data.end,
+            grade: grade,
+            updated: app.getDate()
+          },
+          dbName: 'app_config',
+          _id: 'adminconfig'
+        },
+        success: res => {
+          wx.showToast({
+            title: '更新成功',
+            icon: 'none',
+            duration: 1500,
+          })
+        },
+        fail: err => {
+          log.error('[login] 用户信息更新失败 commonUpdateByid', err)
+          wx.showToast({
+            title: '更新失败',
+            icon: 'none',
+            duration: 1500,
+          })
+          // wx.navigateTo({
+          //   url: '../deployFunctions/deployFunctions',
+          // })
+        }
+      })
+    }
 
 })

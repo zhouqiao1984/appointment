@@ -1,2 +1,18 @@
 <!--pages/adminViewAppoint/adminViewAppoint.wxml-->
-<text>pages/adminViewAppoint/adminViewAppoint.wxml</text>
+ <view wx:for-items="{{items}}" 
+        wx:if="{{item.show}}" 
+        wx:key="{{item.key}}" 
+        class="item-head"
+        >
+        <view class="item-body {{item.free?'free':''}}">
+            <view class="item-value"> {{item.value}} </view>   
+              <view class="item-baby" wx:if="{{!item.free}}">
+                  <image src='/images/user16.png' /> 
+                  <view>{{ item.baby}} </view>   
+            </view>   
+            <view class="item-tel" wx:if="{{!item.free}}">
+                  <image src='/images/tel16.png' /> 
+                  <view>{{ item.tel}} </view>   
+            </view>   
+        </view>    
+</view>

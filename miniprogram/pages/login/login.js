@@ -78,6 +78,7 @@ Page({
         dbData: {
           tel: that.data.tel,
           baby: that.data.baby,
+          grade: 1,
           updated: app.getDate(),
           created: app.getDate()
         },

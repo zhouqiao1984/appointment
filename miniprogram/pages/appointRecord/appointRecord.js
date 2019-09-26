@@ -9,13 +9,18 @@ Page({
     total: 0, // 总记录数
     items: [], // 记录
     hasMore: '', // 是否还有更多
+    curr: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      log.info('[recordAppoint] join', options)
+    log.info('[recordAppoint] join', options)
+    let curr = Number(app.getyyyyMMdd())
+    this.setData({
+      curr: curr
+    })
       this.gatData()
   },
   // 获取分页数据
@@ -30,7 +35,7 @@ Page({
       data:{
         dbName: 'app_time',
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 5,
         filter: { _openid: app.globalData.openId}
       }
     }).then( res => {
@@ -40,9 +45,15 @@ Page({
   // 渲染页面
   renderData(res){
      // res.result.data  res.result.hasMore   res.result.total
-    console.log(res)
+    // console.log(res)
+    let _data = res.result.data
+    for (let i = 0; i < _data.length; i++){
+      _data[i].did = Number(_data[i].date_id)
+    }
+    // console.log(_data) 
+    // console.log(this.data.curr) 
     this.setData({
-      items: res.result.data,
+      items: _data,// res.result.data,
       hasMore: res.result.hasMore,
       total: res.result.total
     })

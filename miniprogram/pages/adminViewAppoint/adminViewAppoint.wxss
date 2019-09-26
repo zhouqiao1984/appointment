@@ -1,1 +1,44 @@
 /* pages/adminViewAppoint/adminViewAppoint.wxss */
+page {
+  width: 100%;
+}
+.item-head {
+  font-family: Cursive;
+  width: 100%;
+}
+.item-head image {
+  margin-right: 10rpx; 
+  width: 36rpx;
+  height: 36rpx;
+}
+.item-body {
+  margin: 5rpx auto;
+  padding: 20rpx 20rpx;
+  border:solid 2px #EEB4B4;
+  border-radius: 20rpx;
+  display: flex;
+  display: -webkit-flex;
+}
+.free {
+  border:solid 2px rgb(14, 223, 42);
+}
+.item-value {
+  width: 20%;
+}
+.item-baby {
+  width: 40%;
+  display: flex;
+  display: -webkit-flex;
+
+}
+.item-baby>view{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}
+
+.item-tel {
+  display: flex;
+  display: -webkit-flex;
+}
