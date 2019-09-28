@@ -2,11 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/adminManage/adminManage",
-   
     "pages/appointRecord/appointRecord",
     "pages/adminViewAppoint/adminViewAppoint",
     "pages/homePage/homePage",
-    
     "pages/appointCalendar/appointCalendar",
     "pages/appointChoice/appointChoice",
     "pages/userManage/userManage",

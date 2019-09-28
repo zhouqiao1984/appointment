@@ -5,6 +5,7 @@ Page({
   data: {
     tel: '',
     baby: '',
+    // nickName: '' // 微信昵称
   },
 
   onLoad: function () {
@@ -53,7 +54,7 @@ Page({
         if (res.result.data.length === 0) {
           that.addData()
         } else {
-          that.updateData(res.result.data[0]._id)
+          that.updateData(res.result.data[0])
         }
       },
       fail: err => {
@@ -78,19 +79,24 @@ Page({
         dbData: {
           tel: that.data.tel,
           baby: that.data.baby,
-          grade: 1,
+          grade: 0,  // 初始角色访客
+          nickName: app.globalData.userInfo.nickName,
           updated: app.getDate(),
           created: app.getDate()
         },
         dbName: 'app_user'
       },
       success: res => {
-           wx.hideLoading()
+          wx.hideLoading()
           setTimeout(function () {
-            wx.switchTab({
+            // wx.switchTab({
+            //   url: '../index/index'
+            // })
+            wx.redirectTo({
               url: '../index/index',
             })
           }, 100)
+       
       },
       fail: err => {
         wx.hideLoading()
@@ -107,7 +113,7 @@ Page({
     })
   },
   // 更新
-  updateData: function (id) {
+  updateData: function (userInfo) {
     let that = this
     // 调用云函数
     wx.cloud.callFunction({
@@ -116,10 +122,12 @@ Page({
         dbData: {
           tel: that.data.tel,
           baby: that.data.baby,
+          nickName: userInfo.nickName,
+          logInfo: 'login.js -> updateData (已存在用户更新用户信息)',
           updated: app.getDate()
         },
         dbName: 'app_user',
-        _id: id
+        _id: userInfo._id
       },
       success: res => {
         wx.hideLoading()

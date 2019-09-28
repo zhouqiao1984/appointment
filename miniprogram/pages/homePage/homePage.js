@@ -54,10 +54,44 @@ Page({
         app.globalData.tel = users[0].tel
         app.globalData.userid = users[0]._id
         app.globalData.grade = users[0].grade
+        if (app.globalData.userInfo.nickName != users[0].nickName){
+            // 如果当前微信昵称与用户表微信昵称不同，更新用户表昵称
+            that.updateNickName()
+        }
+
       }
     })
 
   },
+   /**
+   * 更新用户昵称
+   */
+  updateNickName: function(){
+    // console.log('更新昵称')
+    let that = this
+    // 调用云函数
+    let grade = this.data.gradeIndex
+    wx.cloud.callFunction({
+      name: 'commonUpdateByid',
+      data: {
+        dbData: {
+          nickName: app.globalData.userInfo.nickName,
+          updated: app.getDate()
+        },
+        dbName: 'app_user',
+        logInfo: 'homePage.js -> updateNickName (对比后更新用户昵称)',
+        _id: app.globalData.userid
+      },
+      success: res => {
+        log.info('[homePage] 用户昵称更新成功commonUpdateByid', app.globalData.userInfo )
+      },
+      fail: err => {
+        log.error('[homePage] 用户信息更新失败 commonUpdateByid', err)
+      }
+    })
+
+  },
+
    /**
    * 初始化预约配置信息
    */

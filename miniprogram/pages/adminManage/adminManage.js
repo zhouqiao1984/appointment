@@ -120,7 +120,7 @@ Page({
       }
       dateArr[i] = obj;
     }
-    console.log('日历数组 -----------> ', dateArr)
+    // console.log('日历数组 -----------> ', dateArr)
     this.setData({
       dateArr: dateArr
     })
@@ -166,8 +166,6 @@ Page({
       // console.log('初始化本月数据')
       this.getDataByMmonth(month + 1, year, month, year)
     }
-    
-    
   },
   /**
    * 下月切换
@@ -271,6 +269,7 @@ Page({
             updated: app.getDate()
           },
           dbName: 'app_config',
+          logInfo: 'adminManage.js -> updateConfig (管理员页面更新预约配置)',
           _id: 'adminconfig'
         },
         success: res => {

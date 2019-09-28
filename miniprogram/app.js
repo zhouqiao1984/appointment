@@ -16,6 +16,8 @@ App({
     }
     /**
      * islogin: false,
+     * avatarUrl = e.detail.userInfo.avatarUrl  wx_api
+     * userInfo = e.detail.userInfo   wx_api
      * baby           app_user > baby   宝宝名字
      * tel            app_user > tel    手机号
      * userid         app_user > _id    user表_id

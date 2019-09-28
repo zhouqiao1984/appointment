@@ -6,7 +6,7 @@
 .calendar_title{
   width: 76%; 
   margin: 10rpx auto;
-  margin-top: 2em;
+  /* margin-top: 2em; */
   justify-content: space-between;
   font-size: 22pt;
   color: #58595b;
@@ -15,12 +15,20 @@
   -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
   }
-
-.calendar_title .icon image{
+.calendar_title view image{
   width: 65rpx; 
   height: 65rpx;
   margin: 10rpx auto;
   }
+.iconhide {
+  opacity:0.3;
+}
+/* 
+.calendar_title .icon image{
+  width: 65rpx; 
+  height: 65rpx;
+  margin: 10rpx auto;
+  } */
 .calendar_yearmonth {
    display: table-cell;
    vertical-align:middle;
@@ -29,7 +37,7 @@
 /* 日历 */
 .calendar{
   width: 100%;
-  margin-top: 75rpx;
+  /* margin-top: 75rpx; */
   background: #fff;
   border-bottom-right-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
@@ -69,6 +77,7 @@
   padding: 10rpx 0;
   width: 80%;
   margin: 0 auto;
+  line-height: 2.8em; /* 日期Y轴间距 */
   }
 .date_box>view{
   position: relative;
@@ -85,9 +94,30 @@
   }
 .nowDay .date_head{
   width: 60rpx;
-  border-radius: 50%;
+  border-radius: 20%;
   text-align: center;
   color: #fff;
-  background-color: #ff9933;
+  background-color: #1296db;
   margin: 0 auto;
+  }
+
+    /* 右上角预约数 */
+  .appoint {
+    position: absolute;
+    margin-top: -70rpx;
+    margin-left: 60rpx;
+    color: #708090;
+    font-size: 10pt;
+    border-radius: 100%;
+    background-color: #3CB371; /* #C1FFC1 */
+    width: 40rpx;
+    height: 40rpx;
+    padding: 1rpx 1rpx;
+    opacity: 0.8;
+
+  }
+
+  .appoint>view {
+    margin-top: -12rpx;
+    color:#FFFAFA;
   }

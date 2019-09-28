@@ -1,16 +1,15 @@
 <view>
-
-    <view class='calendar_title '>
-      <view class='icon' bindtap='lastMonth'>
-        <image src='/images/last.png' />
+      <view class='calendar_title '>
+        <view class='{{ isShow ? "iconhide" : ""}}' bindtap='lastMonth'>
+          <image src='/images/last.png' />
+        </view>
+        <view class="calendar_yearmonth">
+          <view >{{year}}年{{month}}月</view>
+        </view>
+        <view class='{{ isShow ? "" :"iconhide"}}' bindtap='nextMonth'>
+          <image src='/images/next.png' />
+        </view>
       </view>
-      <view class="calendar_yearmonth">
-        <view >{{year}}年{{month}}月</view>
-      </view>
-      <view class='icon' bindtap='nextMonth'>
-        <image src='/images/next.png' />
-      </view>
-    </view>
 
     <!-- 日历主体 -->
     <view class='calendar'>
@@ -30,7 +29,11 @@
                             data-month='{{month}}' 
                             data-datenum='{{item.dateNum}}'
                       >
-                      <view>{{item.dateNum}}</view>
+                            <view>{{item.dateNum}}</view>
+                            <view class="{{item.dateNum?'appoint':''}}">
+                                    <view>{{item.appoint}}
+                                    </view>
+                                </view>
                       </view>
                   </view>
             </view>
