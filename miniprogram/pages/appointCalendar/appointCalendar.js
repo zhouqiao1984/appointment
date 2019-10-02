@@ -18,7 +18,10 @@ Page({
     isShow: true, // 切换左右箭头样式
     nowCountDate: null, // 本月数据
     nextCountDate: null, // 下月数据
-    end: '', // 预约开放截止日期
+    endNum: '', // 预约开放截止日期
+    gradeArray: ['访客', '未授权用户', '普通用户', '会员'], // 预约权限列表
+    gradeIndex: 0, // 预约权限选择
+    grade: 0
   },
   onLoad: function () {
     log.info('[makeAppoint] join')
@@ -29,6 +32,12 @@ Page({
     let nextMonth = month > 11 ? 0 : month;
     let config_grade = app.globalData.config_grade || 0
     let config_end = app.globalData.config_end || ''
+    let endNum = 0
+    config_end = config_end.replace(/\-/g, "")
+    if (config_end.length == 8){
+      endNum = Number(config_end)
+    }
+    let grade = app.globalData.grade || 0
     // this.dateInit();
     this.setData({
       year: year,
@@ -40,7 +49,8 @@ Page({
       nextYear: year,
       nextMonth: (nextMonth + 1),
       gradeIndex: config_grade,
-      end: config_end
+      endNum: endNum,
+      grade: grade
     })
     this.getDataByMmonth(month, year, null, null)
   },
@@ -76,34 +86,73 @@ Page({
       }
     })
   },
+  /**
+   * 点击日期预约
+   */
   lookHuoDong: function(e) {
-    let year = e.currentTarget.dataset.year;
-    let month = e.currentTarget.dataset.month;
-    let datanum = e.currentTarget.dataset.datenum;
-    let timeError = false
-    if (year < this.data.nowYear){
-      timeError = true
-    } else if (year == this.data.nowYear){
-      if (month < this.data.nowMonth) {
-        timeError = true
-      } else if (month == this.data.nowMonth){
-        if (datanum < this.data.nowDay) {
-          timeError = true
-        }
-      }
-    }
-    if(timeError){
+    let that = this
+    let appoint = e.currentTarget.dataset.appoint;
+     // 判断1，预约名额是否已满 35为满
+    if (appoint >= 35) {
       wx.showToast({
-        title: '已停止预约',
+        title: '预约已满',
         icon: 'none',
         duration: 2000
       })
     }else{
-      wx.navigateTo({
-        url: '../appointChoice/appointChoice?year=' + year + '&month=' + month + '&day=' + datanum
-      });
-    }
-   
+      let year = e.currentTarget.dataset.year;
+      let month = e.currentTarget.dataset.month;
+      let datenum = e.currentTarget.dataset.datenum;
+      // 预约是否成立
+      let timeError = false
+      // 判断2，日期是否过期
+      if (year < this.data.nowYear) {
+        timeError = true
+      } else if (year == this.data.nowYear) {
+        if (month < this.data.nowMonth) {
+          timeError = true
+        } else if (month == this.data.nowMonth) {
+          if (datenum < this.data.nowDay) {
+            timeError = true
+          }
+        }
+      }
+      if (timeError) {
+        wx.showToast({
+          title: '已停止预约',
+          icon: 'none',
+          duration: 2000
+        })
+      } else {
+        // 判断3，当前用户权限
+        if (this.data.grade < this.data.gradeIndex) {
+          wx.showToast({
+            title: '当前设定【' + that.data.gradeArray[that.data.gradeIndex] + '】及以上可预约',
+            icon: 'none',
+            duration: 5000
+          })
+        } else {
+          let s_month = month > 9 ? '' + month : '0' + month
+          let s_datenum = datenum > 9 ? '' + datenum : '0' + datenum
+          let thisNum = Number(year + '' + s_month + s_datenum)
+          console.log(thisNum)
+          console.log(this.data.endNum)
+          // 判断4，日期是否过期
+          if (thisNum > this.data.endNum) {
+            wx.showToast({
+              title: '当前设定【' + app.globalData.config_end + '】之前可预约',
+              icon: 'none',
+              duration: 5000
+            })
+          } else {
+            wx.navigateTo({
+              url: '../appointChoice/appointChoice?year=' + year + '&month=' + month + '&day=' + datenum
+            });
+          }
+        }
+
+      }
+    }  
   },
 
   dateInit: function (setYear, setMonth, countDate) {
@@ -133,7 +182,7 @@ Page({
           isToday: '' + year + (month + 1) + num,
           dateNum: num,
           weight: 5,
-          appoint: countDate[num].num // i+10//当日预约数量
+          appoint: i + 10//countDate[num].num // i+10//当日预约数量
         }
       } else {
         obj = {};

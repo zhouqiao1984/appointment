@@ -39,28 +39,40 @@
               </view> 
         </navigator>
     </view >
-    <view class="i_menu">
-          <navigator url="/pages/appointRecord/appointRecord"
-                  class="i_navigator"
-                  open-type="navigate" 
-                  hover-class="other-navigator-hover">
-                  <view class="i_label">我的预约</view>
-                  <view class="i_text">
-                    <image src='/images/to-right32.png' />
-                  </view>
-          </navigator>
-      </view>
-
       <view class="i_menu" wx:if='{{isAdmin}}'>
           <navigator url="/pages/adminManage/adminManage"
-                  class="i_navigator"
+                  class="i_navigator_big"
                   open-type="navigate" 
                   hover-class="other-navigator-hover">
-                  <view class="i_label">管理员</view>
+                  <view class="i_label">
+                      <view class="i_h1">
+                          预约管理
+                        </view>
+                        <view class="i_h2">
+                        管理员权限
+                      </view>
+                  </view>
                   <view class="i_text">
                     <image src='/images/to-right32.png' />
                   </view>
           </navigator>
       </view>
-   
+       <view class="i_menu" wx:if='{{isAdmin}}'>
+          <navigator url="/pages/userList/userList"
+                  class="i_navigator_big"
+                  open-type="navigate" 
+                  hover-class="other-navigator-hover">
+                  <view class="i_label">
+                      <view class="i_h1">
+                          用户管理
+                        </view>
+                        <view class="i_h2">
+                        管理员权限
+                      </view>
+                  </view>
+                  <view class="i_text">
+                    <image src='/images/to-right32.png' />
+                  </view>
+          </navigator>
+      </view>
 </view>

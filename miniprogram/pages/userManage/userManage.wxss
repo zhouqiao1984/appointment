@@ -31,29 +31,52 @@
   background-color: white;
 }
 
-.i_navigator{
+.i_navigator {
   display: flex;
   justify-content: space-between;
   height: 3em;
   align-items: center;
 }
+.i_navigator_big {
+  display: flex;
+  justify-content: space-between;
+  height: 6em;
+  align-items: center;
+}
+.i_label {
+  line-height: 2em;
+  font-family: Cursive;
+  padding-left: 1em;
+
+}
+.i_label .i_h1{
+  font-size: 40rpx;
+}
+.i_label .i_h2{
+  font-size: 28rpx;
+}
 .i_navigator .i_label, .i_openidkey {
   padding-left: 1em;
 }
-.i_navigator .i_text {
+.i_navigator .i_text, .i_navigator_big .i_text{
   display: flex;
   align-items: center;
   padding-right: 1.2em;
   color: #8a8a8a
 }
 
-navigator image {
+.i_text image {
   width: 1em;
   height: 1em;
   margin-left: 0.3em;
   padding-top: 0.15em;
 }
-
+.i_icon image {
+  width: 4em;
+  height: 3.6em;
+  margin-left: 2em;
+  /* padding-top: 0.15em; */
+}
 /** 修改默认的navigator点击态 **/
 /* .navigator-hover {
     color:blue;

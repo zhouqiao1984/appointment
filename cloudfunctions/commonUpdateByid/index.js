@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
   let dbData = event.dbData
   let _id = event._id
   dbData._openid = _openid
-  console.log('logInfi: ', event.logInfo)
+  console.log('logInfo: ', event.logInfo)
   console.log('cloudfunc [commonUpdateByid], _openid[', _openid, ']')
   console.log('dbName[', dbName, '], _id[',_id,']')
   console.log('dbData[', dbData, ']')

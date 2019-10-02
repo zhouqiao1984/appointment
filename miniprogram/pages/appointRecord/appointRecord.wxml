@@ -11,7 +11,6 @@
       <view class="i-text" >
           <image src='/images/timeblue48.png' /> 
           <view >{{item.view}}</view>
-      </view>
-    
+      </view> 
   </view>
 

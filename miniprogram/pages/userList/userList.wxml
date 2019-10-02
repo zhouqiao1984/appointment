@@ -1,0 +1,40 @@
+<!--pages/userList/userList.wxml-->
+
+<view class="i-row" wx:if='{{items.length==0}}' wx:key=''>
+      <view class="i-nodata"><view>暂无记录</view></view>
+  </view>
+
+
+  <view class="i-row" 
+        wx:if='{{items.length>0}}' 
+        wx:for='{{items}}' 
+        wx:key=''
+        >
+      <view class="i-text" 
+          bindtap='dosth'
+          data-openid='{{item._openid}}'
+          data-id='{{item._id}}'
+          data-name='{{item.nickName}}'>
+          <!-- <image src='/images/member.png' />  -->
+              <view class="i-left">
+                  <view class="i-ele" >
+                      <image src='/images/member.png' />
+                      <view>{{item.nickName}}</view>
+                  </view>
+                  <view class="i-ele" >
+                      <image src='/images/member.png' />
+                      <view>{{item.tel}}</view>
+                  </view>
+                  <view class="i-ele" >
+                      <image src='/images/member.png' />
+                      <view>{{item.baby}}</view>
+                  </view>
+              </view>
+              <view class="i-right">
+                  <view  class="i-card">
+                    {{item.grade}}
+                  </view>
+              </view>
+
+      </view> 
+  </view>

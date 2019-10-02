@@ -19,7 +19,7 @@ Page({
     nextCountDate: null, // 下月数据
     end:'', // 预约开放截止日期
     // switchChecked: '', // 开启会员模式 true 3 , false 2
-    gradeArray: ['访客', '普通用户', '会员'], // 预约权限列表
+    gradeArray: ['访客', '未授权用户', '普通用户', '会员'], // 预约权限列表
     gradeIndex: 0, // 预约权限选择
   },
   onLoad: function () {

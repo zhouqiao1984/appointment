@@ -41,25 +41,34 @@ Page({
   getUsers: function () {
     let that = this
     wx.cloud.callFunction({
-      name: 'commonGet',
-      data: {
-        dbName: 'app_user',
-        filter: { _openid: app.globalData.openId }
-      }
+      name: 'getUser',
+      data: {}
     }).then(res => {
-      let users = res.result.data
-      if (users.length > 0) {
-        log.info('[首页] 读取用户_openid[', app.globalData.openId, ']信息', users[0])
-        app.globalData.baby = users[0].baby
-        app.globalData.tel = users[0].tel
-        app.globalData.userid = users[0]._id
-        app.globalData.grade = users[0].grade
-        if (app.globalData.userInfo.nickName != users[0].nickName){
+      if (res.result.data){
+        let users = res.result.data
+        if (users.length > 0) {
+          log.info('[首页] 读取用户_openid[', users[0]._openid, ']信息', users[0])
+          app.globalData.baby = users[0].baby
+          app.globalData.tel = users[0].tel
+          app.globalData.userid = users[0]._id
+          app.globalData.grade = users[0].grade
+          app.globalData.openId = users[0]._openid
+          if (app.globalData.userInfo.nickName != users[0].nickName) {
             // 如果当前微信昵称与用户表微信昵称不同，更新用户表昵称
             that.updateNickName()
+          }
+        } else {
+          wx.redirectTo({
+            url: '../login/login',
+          })
         }
-
+      } else {
+        wx.redirectTo({
+          url: '../login/login',
+        })
       }
+      
+   
     })
 
   },
@@ -104,11 +113,13 @@ Page({
         filter: { _id: 'adminconfig' }
       }
     }).then(res => {
-      let config = res.result.data
-      if (config.length > 0) {
-        log.info('[首页 homePage] 读取预约配置信息成功', config[0])
-        app.globalData.config_end = config[0].end
-        app.globalData.config_grade = config[0].grade
+      if (res.result.data){
+        let config = res.result.data
+        if (config.length > 0) {
+          log.info('[首页 homePage] 读取预约配置信息成功', config[0])
+          app.globalData.config_end = config[0].end
+          app.globalData.config_grade = config[0].grade
+        }
       }
     })
 

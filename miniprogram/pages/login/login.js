@@ -123,11 +123,11 @@ Page({
           tel: that.data.tel,
           baby: that.data.baby,
           nickName: userInfo.nickName,
-          logInfo: 'login.js -> updateData (已存在用户更新用户信息)',
           updated: app.getDate()
         },
         dbName: 'app_user',
-        _id: userInfo._id
+        _id: userInfo._id,
+        logInfo: 'login.js -> updateData (已存在用户更新用户信息)'
       },
       success: res => {
         wx.hideLoading()

@@ -24,7 +24,7 @@ App({
      * openId         _openid   微信openid
      * appId      
      * grade          app_user > grade  用户级别
-     *                    0 访客 1 普通用户 2 会员  3、管理员   字段类型 number
+     *                    0 访客 1未授权用户 2 普通用户 3 会员  4、管理员   字段类型 number
      * config_end     app_config > end  可预约日期
      *                    2019-10-01
      * config_grade   app_config > grade  预约模式
