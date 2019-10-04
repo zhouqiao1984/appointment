@@ -182,7 +182,7 @@ Page({
           isToday: '' + year + (month + 1) + num,
           dateNum: num,
           weight: 5,
-          appoint: i + 10//countDate[num].num // i+10//当日预约数量
+          appoint: countDate[num].num // i+10//当日预约数量
         }
       } else {
         obj = {};

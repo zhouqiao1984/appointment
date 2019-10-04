@@ -1,10 +1,10 @@
 {
   "pages": [
-
+    "pages/appointRecord/appointRecord",
     "pages/index/index",
     "pages/userList/userList",
     "pages/adminManage/adminManage",
-    "pages/appointRecord/appointRecord",
+    
     "pages/adminViewAppoint/adminViewAppoint",
     "pages/homePage/homePage",
     "pages/appointCalendar/appointCalendar",

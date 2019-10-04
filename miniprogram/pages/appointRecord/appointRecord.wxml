@@ -5,12 +5,20 @@
   </view>
   <view class="i-row" wx:if='{{items.length>0}}' wx:for='{{items}}' wx:key=''>
       <view class="i-due" wx:if='{{item.did<curr}}'>
-          <image src='/images/timegray48.png' /> 
-          <view >{{item.view}}</view> 
+          <view class="i-left"></view>
+          <view class="i-middle">
+              <image src='/images/timegray48.png' /> 
+              <view >{{item.view}}</view> 
+          </view>
+          <view class="i-right"></view>
       </view>
       <view class="i-text" wx:else>
-          <image src='/images/timeblue48.png' /> 
-          <view >{{item.view}}</view>
+          <view class="i-left">取消</view>
+          <view class="i-middle">
+            <image src='/images/timeblue48.png' /> 
+            <view >{{item.view}}</view>
+          </view>
+          <view class="i-right">变更</view>
       </view> 
   </view>
 
