@@ -1,40 +1,85 @@
 <!--pages/userList/userList.wxml-->
-
+<view class="i-top">
+    <!-- <view class="i-row"> -->
+        <view class="i-text">
+            <view class="i-search"  bindtap="searching">     
+                <image src='/images/search.png'/>   
+              </view>  
+              <input   
+                    class="weui-input" 
+                    value='{{userid}}'
+                    bindinput="searchUserid"
+                    placeholder="用户ID"
+                    maxlength="28"
+                    />
+              <view class="i-search"  bindtap="reseting">     
+                <image src='/images/close.png'/>   
+              </view>        
+          </view>   
+      <!-- </view>  -->
+</view>
 <view class="i-row" wx:if='{{items.length==0}}' wx:key=''>
       <view class="i-nodata"><view>暂无记录</view></view>
   </view>
 
+<view wx:if='{{items.length>0}}' >
+    <view class="i-row" 
+          wx:for='{{items}}' 
+          wx:for-index="idx"
+          wx:key=''
+            >
+        <view class="i-text" 
+            data-openid='{{item._openid}}'
+            data-id='{{item._id}}'
+            data-name='{{item.nickName}}'>
+            <!-- <image src='/images/member.png' />  -->
+                <view class="i-left">
+                    <view class="i-ele" >
+                        <image src='/images/userlist-chat.png' />
+                        <view>{{item.nickName}}</view>
+                    </view>
+                    <view class="i-ele" >
+                        <image src='/images/userlist-member.png' />
+                        <view>{{item.baby}}</view>
+                    </view>
+                    <view class="i-ele" >
+                        <image src='/images/userlist-tel.png' />
+                        <view>{{item.tel}}</view>
+                    </view>
+                    <view class="i-ele" >
+                        <image src='/images/userlist-role.png' />
+                        <view wx:if="{{item.grade == 0}}"> 访客 </view>
+                        <view wx:elif="{{item.grade == 1}}"> 新用户 </view>
+                        <view wx:elif="{{item.grade == 2}}"> 普通用户 </view>
+                        <view wx:elif="{{item.grade == 3}}"> 会员 </view>
+                        <view wx:elif="{{item.grade == 4}}"> 管理员 </view>
+                        <view wx:else> 未定义角色 </view>
+                    </view>
+                </view>
+                <view class="i-right">
+                      <radio-group class="radio-group" bindchange="radioChange"    data-index="{{idx}}">
+                        <radio class="radio" 
+                                wx:for-items="{{radioItems}}" 
+                                wx:for-item="radioItem" 
+                                wx:key="name" 
+                                value="{{radioItem.name}}" 
+                                checked="{{radioItem.checked}}"
+                                >
+                            <view class="i-radiotext">
+                                {{radioItem.value}}
+                            </view>
+                        </radio>
+                    </radio-group>
+                </view>
 
-  <view class="i-row" 
-        wx:if='{{items.length>0}}' 
-        wx:for='{{items}}' 
-        wx:key=''
-        >
-      <view class="i-text" 
-          bindtap='dosth'
-          data-openid='{{item._openid}}'
-          data-id='{{item._id}}'
-          data-name='{{item.nickName}}'>
-          <!-- <image src='/images/member.png' />  -->
-              <view class="i-left">
-                  <view class="i-ele" >
-                      <image src='/images/member.png' />
-                      <view>{{item.nickName}}</view>
-                  </view>
-                  <view class="i-ele" >
-                      <image src='/images/member.png' />
-                      <view>{{item.tel}}</view>
-                  </view>
-                  <view class="i-ele" >
-                      <image src='/images/member.png' />
-                      <view>{{item.baby}}</view>
-                  </view>
-              </view>
-              <view class="i-right">
-                  <view  class="i-card">
-                    {{item.grade}}
-                  </view>
-              </view>
-
-      </view> 
-  </view>
+        </view> 
+      </view>
+    <view class="i-row"  >
+        <button  class="primaryBtn"
+                type="primary" 
+                bindtap="primary"> 
+                保存当前设置 
+        </button>
+    </view>
+</view>
+ 

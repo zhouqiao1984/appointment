@@ -10,8 +10,6 @@ Page({
 
   onLoad: function() {
     log.info('[index] join')
-    // this.testSql()
-    // return
 
     let that = this
     if (!wx.cloud) {
@@ -23,7 +21,7 @@ Page({
       return
     }
     // 初始化openId
-    if (!app.globalData.openId) {
+    if (!app.globalData.openID) {
       that.onGetOpenid()
     }
     
@@ -69,8 +67,8 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        app.globalData.openId = res.result.userInfo.openId
-        app.globalData.appId = res.result.userInfo.appId
+        app.globalData.openID = res.result.userInfo.openId
+        app.globalData.appID = res.result.userInfo.appId
       },
       fail: err => {
         log.error('[index] 云函数 login 调用失败', err)

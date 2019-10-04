@@ -9,10 +9,11 @@ exports.main = async (event, context) => {
   let dbName = event.dbName
   let filter = event.filter ? event.filter : null
   let column = event.column ? event.column : null
+  let maxCount = event.maxCount ? event.maxCount : 40 // 必填参数 上限20
   console.log('cloudfunc [commonGet] , _openid [', _openid, ']')
   console.log('dbName[', dbName, '], filter[', filter,']')
   return db.collection(dbName).where(filter)
-    .field(column).get().then(res => {
+    .field(column).limit(maxCount).get().then(res => {
     console.log('response -> ',res)
     return res
   })

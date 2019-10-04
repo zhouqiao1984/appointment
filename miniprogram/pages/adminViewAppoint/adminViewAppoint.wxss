@@ -12,12 +12,18 @@ page {
   height: 36rpx;
 }
 .item-body {
-  margin: 5rpx auto;
+  margin: 5rpx 5rpx;
   padding: 20rpx 20rpx;
   border:solid 2px #EEB4B4;
   border-radius: 20rpx;
+}
+.item-row {
+  /* margin: 5rpx auto; */
   display: flex;
   display: -webkit-flex;
+}
+.item-top {
+  margin-top: 12rpx;
 }
 .free {
   border:solid 2px rgb(14, 223, 42);

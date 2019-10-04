@@ -15,16 +15,21 @@ App({
       })
     }
     /**
+     * @ app.globalData.
+     * 
      * islogin: false,
      * avatarUrl = e.detail.userInfo.avatarUrl  wx_api
      * userInfo = e.detail.userInfo   wx_api
-     * baby           app_user > baby   宝宝名字
-     * tel            app_user > tel    手机号
-     * userid         app_user > _id    user表_id
-     * openId         _openid   微信openid
-     * appId      
-     * grade          app_user > grade  用户级别
-     *                    0 访客 1未授权用户 2 普通用户 3 会员  4、管理员   字段类型 number
+     * appUser 
+     *        _id             _id user表_id
+     *        _openid        _openid _openid
+     *        userid         app_user > userid    user表userid即用户openid
+     *        baby           app_user > baby   宝宝名字
+     *        tel            app_user > tel    手机号
+     *        grade          app_user > grade  用户级别
+     *                            0 访客 1 新用户 2 普通用户 3 会员  4、管理员   字段类型 number
+     * openID     wx _openid
+     * appID      wx _appid
      * config_end     app_config > end  可预约日期
      *                    2019-10-01
      * config_grade   app_config > grade  预约模式

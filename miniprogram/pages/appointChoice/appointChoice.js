@@ -209,8 +209,9 @@ Page({
   // 提交数据
   submitData: function () {
     let that = this
-    let baby = app.globalData.baby ? app.globalData.baby : ''
-    let tel = app.globalData.tel ? app.globalData.tel : ''
+    let baby = app.globalData.appUser.baby ? app.globalData.appUser.baby : ''
+    let tel = app.globalData.appUser.tel ? app.globalData.appUser.tel : ''
+    let nickName = app.globalData.appUser.nickName ? app.globalData.appUser.nickName : ''
     table.add({
       data: {
         _id: this.data._id,
@@ -222,6 +223,7 @@ Page({
         index: this.data.index,
         baby: baby,
         tel: tel,
+        nickName: nickName,
         created: app.getDate()
       },
       success: function(res){

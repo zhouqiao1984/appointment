@@ -31,9 +31,13 @@ Page({
   },
 
   onLoad: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     log.info('[homePage] join')
     this.getUsers()
-    this.initConfig()
+    
   },
   /**
    * 初始化用户自定义信息
@@ -47,16 +51,13 @@ Page({
       if (res.result.data){
         let users = res.result.data
         if (users.length > 0) {
-          log.info('[首页] 读取用户_openid[', users[0]._openid, ']信息', users[0])
-          app.globalData.baby = users[0].baby
-          app.globalData.tel = users[0].tel
-          app.globalData.userid = users[0]._id
-          app.globalData.grade = users[0].grade
-          app.globalData.openId = users[0]._openid
+          log.info('[首页] 读取用户_openid[', users[0].userid, ']信息', users[0])
+          app.globalData.appUser = users[0]
           if (app.globalData.userInfo.nickName != users[0].nickName) {
             // 如果当前微信昵称与用户表微信昵称不同，更新用户表昵称
             that.updateNickName()
           }
+          that.initConfig()
         } else {
           wx.redirectTo({
             url: '../login/login',
@@ -67,8 +68,7 @@ Page({
           url: '../login/login',
         })
       }
-      
-   
+
     })
 
   },
@@ -89,13 +89,13 @@ Page({
         },
         dbName: 'app_user',
         logInfo: 'homePage.js -> updateNickName (对比后更新用户昵称)',
-        _id: app.globalData.userid
+        _id: app.globalData.appUser._id
       },
       success: res => {
-        log.info('[homePage] 用户昵称更新成功commonUpdateByid', app.globalData.userInfo )
+        log.info('[homePage-> commonUpdateByid] 用户昵称更新成功 ', app.globalData.userInfo )
       },
       fail: err => {
-        log.error('[homePage] 用户信息更新失败 commonUpdateByid', err)
+        log.error('[homePage -> commonUpdateByid] 用户信息更新失败 ', err)
       }
     })
 
@@ -120,10 +120,15 @@ Page({
           app.globalData.config_end = config[0].end
           app.globalData.config_grade = config[0].grade
         }
+        wx.hideLoading()
       }
     })
-
-  }
-  
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    // wx.hideLoading()
+  },
 
 })

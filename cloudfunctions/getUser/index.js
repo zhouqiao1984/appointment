@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
   console.log('cloudfunc [getUser] , _openid [', _openid, ']')
   console.log('dbName[', dbName, ']')
   return db.collection(dbName).where({
-    _openid: _openid
+    userid: _openid
   }).get().then(res => {
       console.log('response -> ', res)
       return res

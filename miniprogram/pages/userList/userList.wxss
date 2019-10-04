@@ -4,15 +4,35 @@ page {
 }
 .i-row {
   padding: 0 20rpx;
-  /* color: #1607e0ec; */
   font-family: Cursive;
   font-size:  40rpx;
 }
-
+.i-top {
+  padding: 0 20rpx;
+  font-family: Cursive;
+  font-size:  40rpx;
+  background-color: #179b16
+}
+.i-top image {
+  padding: .2em .2em;
+  width: 1.2em;
+  height: 1.2em;
+}
+.i-search {
+  border:solid 2px #FFD700;
+  border-radius: 20rpx;
+}
+input {
+  margin: auto;
+  width: 70%;
+}
+.i-top .i-text {
+  padding: .2em .2em;
+}
 .i-text {
   /* color: #1607e0ec; */
-  margin: 20rpx auto;
-  padding: .5em 1em;
+  margin: 30rpx auto;
+  padding: .5em .5em;
   border:solid 2px #FFD700;
   border-radius: 20rpx;
   /* line-height: 1em; */
@@ -20,12 +40,15 @@ page {
   display: -webkit-flex;
   background: #fff;
 }
+
 .i-left {
-  width: 70%;
+  width: 60%;
 }
 .i-right {
-  padding: 1em 1em;
-  width: 30%;
+  width: 40%;
+}
+.radio {
+  padding: .3em .2em;
 }
 .i-card {
   border-radius: .5em;
@@ -36,12 +59,13 @@ page {
   text-align: center;
   
 }
+
 .i-ele {
   display: flex;
   display: -webkit-flex;
   padding: .5em 0;
 }
-.i-text image {
+.i-row .i-text image {
   margin-right: 30rpx;
   width: 1em;
   height: 1em;
@@ -52,4 +76,8 @@ page {
   font-size:  80rpx;
   text-align: center;
   margin-top: 20rpx;
+}
+.primaryBtn{
+  padding: 0 20rpx;
+  width: 100%;
 }

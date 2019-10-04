@@ -4,15 +4,34 @@
         wx:key="{{item.key}}" 
         class="item-head"
         >
-        <view class="item-body {{item.free?'free':''}}">
-            <view class="item-value"> {{item.value}} </view>   
-              <view class="item-baby" wx:if="{{!item.free}}">
-                  <image src='/images/user16.png' /> 
-                  <view>{{ item.baby}} </view>   
-            </view>   
-            <view class="item-tel" wx:if="{{!item.free}}">
-                  <image src='/images/tel16.png' /> 
-                  <view>{{ item.tel}} </view>   
-            </view>   
+        <view  class="item-body {{item.free?'free':''}}">
+                <view class="item-row">
+                        <view class="item-value"> {{item.value}} </view>   
+                        <view class="item-tel" wx:if="{{!item.free}}">
+                              <image src='/images/16_wechat.png' /> 
+                              <view>{{ item.nickName}} </view>   
+                        </view>
+                </view> 
+                <view class="item-row item-top">
+                        <view class="item-value"></view>   
+                        <view class="item-baby" wx:if="{{!item.free}}">
+                              <image src='/images/16_user.png' /> 
+                              <view>{{ item.baby}} </view>   
+                        </view>   
+                        <view class="item-tel" wx:if="{{!item.free}}"
+                              data-ph='{{ item.tel}}' 
+                              bindtap='callPhone'
+                              >
+                              <image src='/images/16_phone_fill.png' /> 
+                              <view>{{ item.tel}} </view>   
+                        </view>
+                </view> 
+                <view class="item-row item-top">
+                    <view class="item-value"></view>   
+                    <view class="item-tel" wx:if="{{!item.free}}">
+                          <image src='/images/16_doc.png' /> 
+                          <view>{{ item.created}} </view>   
+                    </view>
+            </view>
         </view>    
 </view>

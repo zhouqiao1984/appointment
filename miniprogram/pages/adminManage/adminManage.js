@@ -19,7 +19,7 @@ Page({
     nextCountDate: null, // 下月数据
     end:'', // 预约开放截止日期
     // switchChecked: '', // 开启会员模式 true 3 , false 2
-    gradeArray: ['访客', '未授权用户', '普通用户', '会员'], // 预约权限列表
+    gradeArray: ['访客', '新用户', '普通用户', '会员'], // 预约权限列表
     gradeIndex: 0, // 预约权限选择
   },
   onLoad: function () {
@@ -217,7 +217,7 @@ Page({
   },
 
   /**
-   * 是否会员模式 0 游客 1 用户 2 会员 3管理员 number
+   * 是否会员模式 0 访客 1 新用户 2 普通用户 3 会员 4 管理员 number
    *  
    */
   bindPickerChange: function (e) {
@@ -226,12 +226,7 @@ Page({
       gradeIndex: e.detail.value
     })
   },
- 
-  // switchChange: function (e) {
-  //   this.setData({
-  //     switchChecked: e.detail.value
-  //   })
-  // },
+
  /**
    * 点击更新按钮
    */
@@ -242,7 +237,6 @@ Page({
       content: `预约时间开放至 ${that.data.end}  ,  【${that.data.gradeArray[that.data.gradeIndex]}】 模式`,
       success(res) {
         if (res.confirm) {
-          // 唯一性检查
           that.updateConfig()
         } else if (res.cancel) {
           // console.log('用户点击取消')
@@ -263,7 +257,6 @@ Page({
         name: 'commonUpdateByid',
         data: {
           dbData: {
-            timestamp: new Date().getTime(),
             end: that.data.end,
             grade: grade,
             updated: app.getDate()
@@ -278,6 +271,8 @@ Page({
             icon: 'none',
             duration: 1500,
           })
+          app.globalData.config_end = that.data.end,
+          app.globalData.config_grade = that.data.gradeIndex
         },
         fail: err => {
           log.error('[login] 用户信息更新失败 commonUpdateByid', err)

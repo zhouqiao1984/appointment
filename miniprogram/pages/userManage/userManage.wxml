@@ -15,7 +15,7 @@
     </view>
    <view class="i_menu i_openid">
             <view class="i_openidkey"> ID </view>
-            <input value='{{openId}}'  maxlength="28"/>  
+            <input value='{{openid}}'  maxlength="28"/>  
      </view>
     <view class="i_menu">
         <navigator url="/pages/template/template?title=更改名字&type=text&table=app_user&key=baby&value={{baby}}&_id={{_id}}" 

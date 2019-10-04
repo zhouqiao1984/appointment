@@ -46,7 +46,7 @@ Page({
       name: 'commonGet',
       data: {
         filter: {
-          _openid: app.globalData.openId
+          userid: app.globalData.openID
         },
         dbName: 'app_user'
       },
@@ -82,16 +82,14 @@ Page({
           grade: 0,  // 初始角色访客
           nickName: app.globalData.userInfo.nickName,
           updated: app.getDate(),
-          created: app.getDate()
+          created: app.getDate(),
+          userid: app.globalData.openID
         },
         dbName: 'app_user'
       },
       success: res => {
           wx.hideLoading()
           setTimeout(function () {
-            // wx.switchTab({
-            //   url: '../index/index'
-            // })
             wx.redirectTo({
               url: '../index/index',
             })
@@ -113,7 +111,7 @@ Page({
     })
   },
   // 更新
-  updateData: function (userInfo) {
+  updateData: function (appUser) {
     let that = this
     // 调用云函数
     wx.cloud.callFunction({
@@ -122,17 +120,17 @@ Page({
         dbData: {
           tel: that.data.tel,
           baby: that.data.baby,
-          nickName: userInfo.nickName,
+          nickName: appUser.nickName,
           updated: app.getDate()
         },
         dbName: 'app_user',
-        _id: userInfo._id,
+        _id: appUser._id,
         logInfo: 'login.js -> updateData (已存在用户更新用户信息)'
       },
       success: res => {
         wx.hideLoading()
         setTimeout(function () {
-          wx.switchTab({
+          wx.navigateTo({
             url: '../index/index',
           })
         }, 100)

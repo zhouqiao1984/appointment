@@ -36,7 +36,14 @@ Page({
         dbName: 'app_time',
         pageIndex: 1,
         pageSize: 5,
-        filter: { _openid: app.globalData.openId}
+        filter: { _openid: app.globalData.openID},
+        field: {
+          _id: true,
+          _openid: true,
+          created: true,
+          view: true,
+          date_id: true
+        }
       }
     }).then( res => {
       that.renderData(res)

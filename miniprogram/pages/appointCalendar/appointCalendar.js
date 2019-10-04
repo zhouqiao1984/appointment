@@ -19,7 +19,7 @@ Page({
     nowCountDate: null, // 本月数据
     nextCountDate: null, // 下月数据
     endNum: '', // 预约开放截止日期
-    gradeArray: ['访客', '未授权用户', '普通用户', '会员'], // 预约权限列表
+    gradeArray: ['访客', '新用户', '普通用户', '会员'], // 预约权限列表
     gradeIndex: 0, // 预约权限选择
     grade: 0
   },
@@ -37,7 +37,7 @@ Page({
     if (config_end.length == 8){
       endNum = Number(config_end)
     }
-    let grade = app.globalData.grade || 0
+    let grade = app.globalData.appUser.grade || 0
     // this.dateInit();
     this.setData({
       year: year,
@@ -48,9 +48,9 @@ Page({
       nowDay: now.getDate(),
       nextYear: year,
       nextMonth: (nextMonth + 1),
-      gradeIndex: config_grade,
+      gradeIndex: Number(config_grade),
       endNum: endNum,
-      grade: grade
+      grade: Number(grade)
     })
     this.getDataByMmonth(month, year, null, null)
   },
