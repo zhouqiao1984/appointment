@@ -19,8 +19,16 @@ page {
   display: -webkit-flex;
   background: #fff;
 }
-
-.i-text image {
+.i-due {
+  margin: 20rpx auto;
+  padding: 60rpx 40rpx;
+  border:solid 2px #bfbfbf;
+  border-radius: 20rpx;
+  display: flex;
+  display: -webkit-flex;
+  background: #fff;
+}
+.i-text image, .i-due image {
 margin-right: 20rpx;
 width: 50rpx;
 height: 50rpx;

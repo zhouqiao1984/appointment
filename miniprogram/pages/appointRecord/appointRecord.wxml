@@ -4,11 +4,11 @@
       <view class="i-nodata"><view>暂无记录</view></view>
   </view>
   <view class="i-row" wx:if='{{items.length>0}}' wx:for='{{items}}' wx:key=''>
-      <!-- <view class="i-text" wx:if='{{items.did>curr}}'>
+      <view class="i-due" wx:if='{{item.did<curr}}'>
           <image src='/images/timegray48.png' /> 
-          <view >{{item.view}}11</view> 
-      </view> -->
-      <view class="i-text" >
+          <view >{{item.view}}</view> 
+      </view>
+      <view class="i-text" wx:else>
           <image src='/images/timeblue48.png' /> 
           <view >{{item.view}}</view>
       </view> 
