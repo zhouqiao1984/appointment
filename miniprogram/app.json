@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/appointRecord/appointRecord",
     "pages/index/index",
+    "pages/appointRecord/appointRecord",
+    
     "pages/userList/userList",
     "pages/adminManage/adminManage",
     

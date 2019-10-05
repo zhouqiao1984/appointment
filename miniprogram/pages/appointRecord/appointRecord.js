@@ -52,19 +52,28 @@ Page({
   // 渲染页面
   renderData(res){
      // res.result.data  res.result.hasMore   res.result.total
-    // console.log(res)
     let _data = res.result.data
     for (let i = 0; i < _data.length; i++){
       _data[i].did = Number(_data[i].date_id)
     }
-    // console.log(_data) 
-    // console.log(this.data.curr) 
     this.setData({
       items: _data,// res.result.data,
       hasMore: res.result.hasMore,
       total: res.result.total
     })
     wx.hideLoading()
+  },
+  /**
+   * 预约变更
+   */
+  appChange: function (e) {
+    console.log('预约变更', e.currentTarget.dataset.id)
+  },
+  /**
+   * 预约取消
+   */
+  appDel: function (e) {
+    console.log('预约取消', e.currentTarget.dataset.id)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

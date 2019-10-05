@@ -18,7 +18,7 @@ page {
   display: flex;
   display: -webkit-flex;
   justify-content:space-between;
-  background: #fff;
+  background: #FFFAFA;
 }
 .i-due {
   margin: 20rpx auto;
@@ -34,29 +34,31 @@ page {
   width: 80rpx;
   height: 130rpx;
   color: #fff;
-  writing-mode:vertical-lr;
-  text-align: center;
-
-  /* margin: auto; */
 }
+
 .i-text .i-left {
   background-color: #7CCD7C;
   border-top-left-radius:20rpx;
   border-bottom-left-radius:20rpx;
+  border-right:solid 2px #FFD700;
 }
 .i-right {
   width: 120rpx;
   height: 130rpx;
   color: #fff;
-  writing-mode:vertical-lr;
-  text-align: center;
+}
 
-  /* margin: auto; */
+.i-right view, .i-left view{
+  text-align: center;
+  writing-mode:vertical-lr;
+  height: 100%;
+  margin: 0 auto;
 }
 .i-text .i-right {
   background-color: #87CEFA;
   border-top-right-radius:20rpx;
   border-bottom-right-radius:20rpx;
+  border-left:solid 2px #FFD700;
 }
 .i-middle {
   padding: 40rpx 0rpx;
@@ -65,9 +67,9 @@ page {
 }
 
 .i-text image, .i-due image {
-margin-right: 20rpx;
-width: 50rpx;
-height: 50rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .i-nodata {
