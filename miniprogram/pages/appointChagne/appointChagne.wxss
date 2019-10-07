@@ -30,36 +30,46 @@ input {
   padding: .2em .2em;
 }
 .i-text {
-  /* color: #1607e0ec; */
   margin: 30rpx auto;
   padding: .5em .5em;
   border:solid 2px #FFD700;
   border-radius: 20rpx;
-  /* line-height: 1em; */
   display: flex;
   display: -webkit-flex;
   background: #fff;
 }
-
-.i-left {
-  width: 60%;
+.i-record {
+  margin: 30rpx auto;
+  padding: 1em 1em;
+  border:solid 2px #FFD700;
+  border-radius: 20rpx;
+  background: #fff;
 }
-.i-right {
-  width: 40%;
-}
-.radio {
-  padding: .3em .2em;
-}
-
-.i-ele {
+.i-item {
+  margin: 1em auto;
   display: flex;
   display: -webkit-flex;
-  padding: .5em 0;
 }
-.i-row .i-text image {
-  margin-right: 30rpx;
+
+.i-row .i-record image {
+  margin-right: 10rpx;
   width: 1em;
   height: 1em;
+}
+
+.i-last {
+  margin-left: 1em;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+/* flex中不被压缩的项目 */
+.i-fixed {
+  flex-shrink: 0;
+}
+.primaryBtn{
+  padding: 0 20rpx;
+  width: 100%;
 }
 
 .i-nodata {
@@ -67,8 +77,4 @@ input {
   font-size:  80rpx;
   text-align: center;
   margin-top: 20rpx;
-}
-.primaryBtn{
-  padding: 0 20rpx;
-  width: 100%;
 }

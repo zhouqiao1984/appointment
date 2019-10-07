@@ -1,0 +1,60 @@
+<!--pages/userList/userList.wxml-->
+<view class="i-top">
+        <view class="i-text">
+             <view class="i-search"  bindtap="searching">     
+                <image src='/images/search.png'/>   
+              </view>  
+              <input   
+                    class="weui-input" 
+                    value='{{accept_id}}'
+                    bindinput="changeAppoint"
+                    placeholder="请输入对方的预约号码"
+                    maxlength="10"
+                    />
+              <view class="i-search"  bindtap="reseting">     
+                <image src='/images/close.png'/>   
+              </view>        
+          </view>   
+</view>
+<view class="i-row" wx:if='{{items.length==0}}' wx:key=''>
+      <view class="i-nodata"><view>暂无记录</view></view>
+  </view>
+
+<view wx:if='{{items.length>0}}' >
+      <view class="i-row" 
+          wx:for='{{items}}' 
+          wx:key='' >
+          <view class="i-record ">
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/appoint-id.png' />
+                  <view class='i-fixed'>预约号码:</view>
+                  <view class="i-last">{{item._id}}</view>
+              </view>
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/timeblue48.png' />
+                  <view class='i-fixed'>预约时间:</view>
+                  <view class="i-last">{{item.view}}</view>
+              </view>
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/userlist-chat.png' />
+                  <view class='i-fixed'>微信昵称:</view>
+                  <view class="i-last">{{item.nickName}}</view>
+              </view>
+               <view class="i-item" >
+                  <image class='i-fixed' src='/images/appoint-state.png' />
+                  <view  class='i-fixed' >预约状态:</view>
+                  <view  class="i-last" style="color:red;">{{item.msg}}</view>
+              </view>
+           </view>
+      </view>
+      <view class="i-row"  >
+        <button class="primaryBtn"
+                type="primary" 
+                bindtap="appointChangeBtn"
+                disabled="{{disabled}}"
+                > 
+                申请变更预约时间 
+        </button>
+    </view>
+</view>
+ 

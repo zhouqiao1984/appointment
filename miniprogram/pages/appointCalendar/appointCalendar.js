@@ -12,7 +12,6 @@ Page({
     nowYear: 0,
     nowMonth: 0,
     nowDay: 0,
-
     nextYear: 0, // 下个月的年份
     nextMonth: 0, // 下个月的月份
     isShow: true, // 切换左右箭头样式
@@ -24,7 +23,8 @@ Page({
     grade: 0
   },
   onLoad: function () {
-    log.info('[makeAppoint] join')
+    // this.onInit()
+    log.info('[appointCalendar] join')
     let now = new Date();
     let year = now.getFullYear();
     let month = now.getMonth() + 1;
@@ -34,11 +34,11 @@ Page({
     let config_end = app.globalData.config_end || ''
     let endNum = 0
     config_end = config_end.replace(/\-/g, "")
-    if (config_end.length == 8){
+    if (config_end.length == 8) {
       endNum = Number(config_end)
     }
     let grade = app.globalData.appUser.grade || 0
-    // this.dateInit();
+
     this.setData({
       year: year,
       month: month,
@@ -46,13 +46,19 @@ Page({
       nowYear: year,
       nowMonth: month,
       nowDay: now.getDate(),
-      nextYear: year,
+      nextYear: nextYear,
       nextMonth: (nextMonth + 1),
       gradeIndex: Number(config_grade),
       endNum: endNum,
       grade: Number(grade)
     })
-    this.getDataByMmonth(month, year, null, null)
+  },
+  onShow: function () {
+      this.getDataByMmonth(this.data.month, this.data.year, this.data.month-1, this.data.year)
+  },
+  onInit: function () {
+   
+    
   },
   // 获取某月预约数据
   getDataByMmonth: function (monthSql, yearSql, monthCalendar, yearCalendar) {
@@ -243,6 +249,7 @@ Page({
     if (this.data.nextMonth == this.data.month) {
       return
     }
+    // debugger
     //全部时间的月份都是按0~11基准，显示月份才+1
     let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
     let month = this.data.month > 11 ? 0 : this.data.month;
@@ -257,7 +264,7 @@ Page({
       this.dateInit(year, month, this.data.nextCountDate);
     } else {
       // console.log('初始化下月数据')
-      this.getDataByMmonth(month + 1, year, month + 1, year)
+      this.getDataByMmonth(month + 1, year, month, year)
     }
   },
   // 设置计数模板
@@ -265,11 +272,11 @@ Page({
     for (let i = 0; i < list.length; i++) {
       countDate[list[i]._id].num = list[i].num;
     }
-    if (this.data.nowCountDate === null) {
+    if (this.data.isShow ) {// 当月
       this.setData({
         nowCountDate: countDate
       })
-    } else {
+    } else { // 下月
       this.setData({
         nextCountDate: countDate
       })

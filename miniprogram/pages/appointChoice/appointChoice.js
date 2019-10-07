@@ -121,7 +121,7 @@ Page({
         dbName: 'app_time'
       },
       success: function (res) {
-        console.log('Choice--->', res)
+        // console.log('Choice--->', res)
         that.renderItems(res.result.data)
       },
       fail: err => {
@@ -212,6 +212,7 @@ Page({
     let baby = app.globalData.appUser.baby ? app.globalData.appUser.baby : ''
     let tel = app.globalData.appUser.tel ? app.globalData.appUser.tel : ''
     let nickName = app.globalData.appUser.nickName ? app.globalData.appUser.nickName : ''
+    let userid = app.globalData.openID
     table.add({
       data: {
         _id: this.data._id,
@@ -224,6 +225,7 @@ Page({
         baby: baby,
         tel: tel,
         nickName: nickName,
+        userid: userid,
         created: app.getDate()
       },
       success: function(res){

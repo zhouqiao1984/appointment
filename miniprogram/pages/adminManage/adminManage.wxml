@@ -53,17 +53,10 @@
         </view>
 
           <view class="config_main">
-              <!-- <view class="config_content"> -->
-                <!-- <view>关闭/开启会员模式</view>
-                <view> 
-                    <switch checked="{{switchChecked}}" bindchange="switchChange"/>
-                </view> -->
-                    <!-- </view> -->  
                   <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeArray}}">
                     <view class="config_content">
                       <view class="config_key">预约权限设置 :</view> 
                       <view class="config_val">{{gradeArray[gradeIndex]}}</view>
-                      <!-- <image src='/images/to-right32.png' /> -->
                     </view>
                   </picker>
          

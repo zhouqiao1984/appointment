@@ -189,7 +189,7 @@ Page({
       this.dateInit(year, month, this.data.nextCountDate);
     } else {
       // console.log('初始化下月数据')
-      this.getDataByMmonth(month + 1, year, month + 1, year)
+      this.getDataByMmonth(month + 1, year, month, year)
     }
     
   },

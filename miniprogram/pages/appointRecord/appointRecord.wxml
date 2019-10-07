@@ -3,30 +3,109 @@
 <view class="i-row" wx:if='{{items.length==0}}' wx:key=''>
       <view class="i-nodata"><view>暂无记录</view></view>
   </view>
-  <view class="i-row" wx:if='{{items.length>0}}' wx:for='{{items}}' wx:key=''>
-      <view class="i-due" wx:if='{{item.did<curr}}'>
-          <view class="i-left"></view>
-          <view class="i-middle">
-              <image src='/images/timegray48.png' /> 
-              <view >{{item.view}}</view> 
+  <view wx:if='{{items.length>0}}'  >
+      <view class="i-row" 
+          wx:for='{{items}}' 
+          wx:key='' >
+          <view class="i-due" wx:if='{{item.did<curr}}'>
+               <view class="i-item" >
+                  <image class='i-fixed' src='/images/appoint-id-due.png' />
+                  <view class='i-fixed'>预约号码:</view>
+                  <view class="i-last">{{item._id}}</view>
+              </view>
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/time48-due.png' />
+                  <view class='i-fixed'>预约时间:</view>
+                  <view class="i-last">{{item.view}}</view>
+              </view>
+               <view class="i-item" >
+                  <image class='i-fixed' src='/images/appoint-state-due.png' />
+                  <view class='i-fixed'>预约状态:</view>
+                  <view class="i-last">已过期</view>
+              </view>
           </view>
-          <view class="i-right"></view>
+          <view wx:else class="i-record">
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/appoint-id.png' />
+                  <view class='i-fixed'>预约号码:</view>
+                  <view class="i-last">{{item._id}}</view>
+              </view>
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/timeblue48.png' />
+                  <view class='i-fixed'>预约时间:</view>
+                  <view class="i-last">{{item.view}}</view>
+              </view>
+              <!-- 预约状态 -->
+              <view class="i-item" >
+                  <image class='i-fixed' src='/images/appoint-state.png' />
+                  <view  class='i-fixed' >预约状态:</view>
+                  <view  class="i-last" style="color:red;" wx:if='{{item.change && item.change.state === "1"}}' >
+                     <view wx:if='{{item.change.type === "apply"}}'> 变更申请中...</view>
+                     <view wx:else='{{item.change.type === "accept"}}'> 变更受理中...</view>
+                  </view>
+                  <view class="i-last" wx:else >正常</view>
+              </view>
+              <!-- <view class="i-item" wx:else >
+                  <image class='i-fixed' src='/images/appoint-state.png' />
+                  <view class='i-fixed'>预约状态:</view>
+                  <view class="i-last">正常</view>
+              </view> -->
+              <!-- 变更时间 -->
+              <block wx:if='{{item.change && item.change.state === "1"}}' >
+                  <view class="i-item" >
+                      <image class='i-fixed' src='/images/appoint-state.png' />
+                      <view  class='i-fixed' >变更时间:</view>
+                      <view  class="i-last" style="color:red;">
+                        <view > {{item.change.otherview}}</view>
+                      </view>
+                  </view>
+                  <view class="i-item i-option" wx:if='{{item.change.type === "apply"}}' >
+                      <view  class="i-change" 
+                        bindtap="appCancel"
+                        data-id='{{item._id}}'
+                        data-otherid='{{item.change.otherid}}'
+                        data-view='{{item.view}}'
+                        data-otherview='{{item.change.otherview}}'
+                      >
+                          <view>撤回</view>
+                      </view>
+                  </view>
+                   <view class="i-item i-option" wx:if='{{item.change.type === "accept"}}' >
+                      <view  class='i-del' 
+                         bindtap="appReject"
+                        data-id='{{item._id}}'
+                        data-otherid='{{item.change.otherid}}'
+                        data-view='{{item.view}}'
+                        data-otherview='{{item.change.otherview}}'
+                      >
+                          <view>拒绝</view>
+                      </view>
+                      <view  class="i-change" 
+                        bindtap="appAgree"
+                        data-id='{{item._id}}'
+                        data-change='{{item.change}}'
+                        data-view='{{item.view}}'
+                      >
+                          <view>同意</view>
+                      </view>
+                  </view>
+              </block>
+              <!-- 按钮 -->
+               <view class="i-item i-option" wx:else >
+                  <view  class='i-del' 
+                    bindtap="appDel"
+                    data-id='{{item._id}}'
+                    data-view='{{item.view}}'>
+                      <view>取消预约</view>
+                  </view>
+                   <navigator 
+                      url="/pages/appointChagne/appointChagne?_id={{item._id}}&view={{item.view}}&baby={{item.baby}}&tel={{item.tel}}&nickName={{item.nickName}}&userid={{item.userid}}" 
+                      class="i-change"
+                      open-type="navigate" >
+                      <view>预约变更</view>
+                  </navigator>
+              </view>
+           </view>
       </view>
-      <view class="i-text" wx:else>
-          <view class="i-left" 
-                bindtap="appDel"
-                data-id='{{item._id}}'>
-              <view>取消</view>
-          </view>
-          <view class="i-middle">
-            <image src='/images/timeblue48.png' /> 
-            <view >{{item.view}}</view>
-          </view>
-          <view class="i-right" 
-                bindtap="appChange"
-                data-id='{{item._id}}'>
-              <view>变更</view>
-          </view>
-      </view> 
   </view>
 

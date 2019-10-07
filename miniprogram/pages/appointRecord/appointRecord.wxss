@@ -4,72 +4,8 @@ page {
 }
 .i-row {
   padding: 0 20rpx;
-  /* color: #1607e0ec; */
   font-family: Cursive;
   font-size:  40rpx;
-}
-
-.i-text {
-  /* color: #1607e0ec; */
-  margin: 20rpx auto;
-  /* padding: 60rpx 0rpx; */
-  border:solid 2px #FFD700;
-  border-radius: 20rpx;
-  display: flex;
-  display: -webkit-flex;
-  justify-content:space-between;
-  background: #FFFAFA;
-}
-.i-due {
-  margin: 20rpx auto;
-  /* padding: 60rpx 40rpx; */
-  border:solid 2px #bfbfbf;
-  border-radius: 20rpx;
-  display: flex;
-  display: -webkit-flex;
-  justify-content:space-between;
-  background: #fff;
-}
-.i-left {
-  width: 80rpx;
-  height: 130rpx;
-  color: #fff;
-}
-
-.i-text .i-left {
-  background-color: #7CCD7C;
-  border-top-left-radius:20rpx;
-  border-bottom-left-radius:20rpx;
-  border-right:solid 2px #FFD700;
-}
-.i-right {
-  width: 120rpx;
-  height: 130rpx;
-  color: #fff;
-}
-
-.i-right view, .i-left view{
-  text-align: center;
-  writing-mode:vertical-lr;
-  height: 100%;
-  margin: 0 auto;
-}
-.i-text .i-right {
-  background-color: #87CEFA;
-  border-top-right-radius:20rpx;
-  border-bottom-right-radius:20rpx;
-  border-left:solid 2px #FFD700;
-}
-.i-middle {
-  padding: 40rpx 0rpx;
-  display: flex;
-  display: -webkit-flex;
-}
-
-.i-text image, .i-due image {
-  margin-right: 20rpx;
-  width: 50rpx;
-  height: 50rpx;
 }
 
 .i-nodata {
@@ -77,4 +13,68 @@ page {
   font-size:  80rpx;
   text-align: center;
   margin-top: 20rpx;
+}
+
+.i-due {
+  border:solid 2px #bfbfbf;
+  margin: 30rpx auto;
+  padding: .1em 1em;
+  border-radius: 20rpx;
+  background: #fff;
+  color: #8a8a8a;
+}
+.i-record {
+  margin: 30rpx auto;
+  padding: .1em 1em;
+  border:solid 2px #FFD700;
+  border-radius: 20rpx;
+  background: #fff;
+}
+.i-item {
+  margin: 1em auto;
+  display: flex;
+  display: -webkit-flex;
+}
+
+.i-row .i-record image, .i-row .i-due image{
+  margin-right: 10rpx;
+  width: 1em;
+  height: 1em;
+}
+
+.i-last {
+  margin-left: 1em;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+/* flex中不被压缩的项目 */
+.i-fixed {
+  flex-shrink: 0;
+}
+
+.i-option {
+  justify-content: space-around;
+  /* justify-content: center; */
+  color: #fff;
+}
+
+.i-del {
+  width: 5em;
+  height: 2em;
+  background-color: #7CCD7C;
+  border-radius:20rpx;
+  display: flex;
+  justify-content:center;
+}
+.i-change {
+  width: 7em;
+  height: 2em;
+  background-color: #87CEFA;
+  border-radius:20rpx;
+  display: flex;
+  justify-content:center;
+}
+.i-del view, .i-change view{
+  align-self: center;
 }
