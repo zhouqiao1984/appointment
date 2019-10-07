@@ -281,9 +281,9 @@ Page({
             icon: 'none',
             duration: 1500,
           })
-          // wx.navigateTo({
-          //   url: '../deployFunctions/deployFunctions',
-          // })
+          wx.navigateTo({
+            url: '../error/error',
+          })
         }
       })
     }

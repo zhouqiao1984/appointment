@@ -67,8 +67,9 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        app.globalData.openID = res.result.userInfo.openId
-        app.globalData.appID = res.result.userInfo.appId
+        
+        app.globalData.openID = res.result.openid // .userInfo.
+        app.globalData.appID = res.result.appid
       },
       fail: err => {
         log.error('[index] 云函数 login 调用失败', err)

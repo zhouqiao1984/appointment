@@ -27,10 +27,6 @@ async function getDataByMmonth(event) {
   let filter = event.filter ? event.filter : null
   console.log('cloudfunc [getDataByMmonth] , _openid [', OPENID, ']')
   console.log('dbName[', dbName, '], filter[', filter, ']')
-  // return db.collection(dbName).where(filter).orderBy('_id', 'asc').get().then(res => {
-  //   console.log('response -> ok')
-  //   return res
-  // })
   let month = filter.month
   let year = filter.year
   const $ = db.command.aggregate

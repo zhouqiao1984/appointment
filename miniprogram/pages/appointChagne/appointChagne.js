@@ -189,9 +189,9 @@ Page({
           duration: 2000,
           mask: true
         })
-        // wx.navigateTo({
-        //   url: '../deployFunctions/deployFunctions',
-        // })
+        wx.navigateTo({
+          url: '../error/error',
+        })
       }
     })
   },

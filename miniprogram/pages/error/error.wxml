@@ -1,0 +1,2 @@
+<!--pages/error/error.wxml-->
+<text>服务器错误,请检查您的网络是否正常,如果是服务器问题请联系管理员</text>
