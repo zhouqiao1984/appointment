@@ -31,13 +31,14 @@ Page({
    * 提交当前页面角色配置
    */
   primary: function(){
+    let that = this
     wx.showModal({
       title: '更新确认',
       content: `保存当前页面所有用户的角色配置`,
       success(res) {
         if (res.confirm) {
           let roles = []
-          let dataList = this.data.items
+          let dataList = that.data.items
           dataList.forEach(({ _id, newGrade, grade }) => {
             if (newGrade) {
               let r = {
@@ -49,7 +50,7 @@ Page({
             }
           });
           if (roles.length > 0) {
-            this.batchUpdate(roles)
+            that.batchUpdate(roles)
           } else {
             wx.showToast({
               title: '没有需要更新的设置',

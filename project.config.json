@@ -11,7 +11,7 @@
 	},
 	"appid": "wxabfe65f5a995c9e6",
 	"projectname": "appoint-new",
-	"libVersion": "2.8.2",
+	"libVersion": "2.8.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

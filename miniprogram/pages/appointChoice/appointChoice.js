@@ -3,6 +3,7 @@ const app = getApp()
 const log = require('../../log.js')
 const db = wx.cloud.database()
 const table = db.collection('app_time')
+const _ = db.command
 Page({
 
   data: {
@@ -182,18 +183,20 @@ Page({
   // 检查是否已预约
   checkFree: function() {
     let that = this
-    table.where({
-      _id: that.data._id,
-      // 发布版此处需要加上 or _openid= 当前用户,以限制用户一天不可多次预约
-    }).get({
+    table.where(
+      _.or([
+        {userid: app.globalData.openID, date_id: that.data.date_id},
+        {_id: that.data._id}
+      ])
+    ).get({
       success: function (res) {
         if (res.data.length === 0){
           that.submitData()
         }else{
           wx.showToast({
-            title: '预约失败请重试',
+            title: '预约失败,可能的原因:  1、该时间段已被其他用户预约。2、您今天已经预约过了。',
             icon: 'none',
-            duration: 1500
+            duration: 5000
           })
           // 刷新页面
           that.refreshItems(that.data.date_id)

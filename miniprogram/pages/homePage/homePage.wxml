@@ -13,6 +13,8 @@
       </swiper-item>
     </block>
   </swiper>
+
+  
   <view class="card">
   </view>
   <view class="page-section page-section-gap" style="height:50%;">
@@ -25,7 +27,7 @@
       show-location
     ></map>
   </view>
-</view>
+</view> 
 
 
 

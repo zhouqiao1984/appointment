@@ -8,7 +8,6 @@ Page({
     takeSession: false,
     requestResult: '',
     imgUrls: [
-      // '../../images/back_home0.jpg',
       '../../images/back_home1.jpg',
       '../../images/back_home2.jpg',
       '../../images/back_home3.jpg'
